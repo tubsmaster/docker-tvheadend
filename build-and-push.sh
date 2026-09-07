@@ -8,5 +8,5 @@ IMAGE_URL=tubsmaster/docker-tvheadend
 
 TARGET_PLATFORM='linux/amd64'
 #docker buildx prune -a -f
-docker buildx build --pull --push --platform ${TARGET_PLATFORM} --output='type=image' -t ${IMAGE_URL} .
+docker buildx build --network host --pull --push --platform ${TARGET_PLATFORM} --output='type=image' -t ${IMAGE_URL} .
 

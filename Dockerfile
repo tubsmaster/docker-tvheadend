@@ -2,10 +2,10 @@
 
 ############## picons stage ##############
 # built by https://github.com/linuxserver/picons-builder
-FROM ghcr.io/linuxserver/picons-builder as piconsstage
+FROM ghcr.io/linuxserver/picons-builder AS piconsstage
 
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.24 as buildstage
+FROM ghcr.io/linuxserver/baseimage-alpine:3.24 AS buildstage
 ############## build stage ##############
 
 # environment settings
@@ -105,7 +105,7 @@ RUN \
     --prefix=/usr \
     --python=python3 \
     --sysconfdir=/config && \
-  make -j 2 && \
+  make -j 8 && \
   make DESTDIR=/tmp/tvheadend-build install
 
 RUN \
@@ -116,7 +116,7 @@ RUN \
   ./configure \
     --bindir=/usr/bin \
     --sysconfdir=/config/comskip && \
-  make -j 2 && \
+  make -j 8 && \
   make DESTDIR=/tmp/comskip-build install
 
 RUN \
